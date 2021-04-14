@@ -1,0 +1,19 @@
+<% layout('layout/boilerplate') %>
+
+<div id="map" style="width: 100%; height: 500px" ></div>
+    <h1>All Parks</h1>
+    <div>
+        <a href="/parks/new">Add Park</a>
+    </div>
+    <ul>
+        <% for (let park of parks) {%>
+            <li><a href="/parks/<%= park._id %>"><%= park.title %> </a></li>
+            <% } %>
+    </ul>
+    
+    <script>
+        const mapToken = '<%- process.env.MAPBOX_TOKEN %>';
+        const parks = {features: <%- JSON.stringify(parks) %>} ;
+    </script>
+<script src="/javascripts/clusterMap.js"></script>
+

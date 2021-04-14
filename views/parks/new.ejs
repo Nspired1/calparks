@@ -1,0 +1,40 @@
+<% layout('layout/boilerplate') %>
+<div class="row">
+    <h1 class="text-center">New Park</h1>
+    <div class="col-md-6 offset-md-3">
+        <div class="card shadow">
+            <div class="card-body">
+                <form action="/parks" method="POST" novalidate class="validate-form" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label class="form-label" for="title">Title</label>
+                        <input class="form-control" type="text" id="title" name="park[title]"/>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="location">Location</label>
+                        <input class="form-control" type="text" id="location" name="park[location]"/>
+                    </div>
+                    <div class="mb-3 custom-file">
+                        <label for="image" class="custom-file-label">Upload Images</label>
+                        <input class="form-file-input" type="file" id="image" name="image" multiple>
+                    </div>
+                    <!-- <input type="file" name="image" multiple> -->
+                    <!-- <div class="mb-3">
+                        <label class="form-label" for="image">Image URL</label>
+                        <input class="form-control" id="image" name="park[image]" type="text">
+                    </div> -->
+                    <div class="mb-3">
+                        <label class="form-label" for="description">Description</label>
+                        <textarea class="form-control" type="text" name="park[description]" id="description" cols="20" rows="5"></textarea>
+                    </div>
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-primary">Add Park</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div>
+            <a href="/parks" >Back to All Parks</a>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,52 @@
+<% layout('layout/boilerplate') %>
+<div class="row">
+    <h1 class="text-center">Edit Park</h1>
+    <div class="col-6 offset-3">
+    <form action="/parks/<%= park._id %>?_method=PUT" method="POST" class="validated-form" novalidate enctype="multipart/form-data">
+        <div class="mb-3">
+            <label class="form-label" for="title">Title</label>
+            <input type="text" class="form-control" id="title" name="park[title]" value="<%=park.title %>"/>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="location">Location</label>
+            <input type="text" class="form-control" id="location" name="park[location]" value="<%=park.location %>"/>
+        </div>
+        <div id='map' style='width: 400px; height: 300px;'></div>
+        <div class="mb-3">
+            <label class="form-label" for="description">Description</label>
+            <input type="textarea" row="5" columns="33" id="description" name="park[description]" value="<%=park.description %>"/>
+        </div>
+        <div class="mb-3 custom-file">
+            <label for="image" class="form-label custom-file-label">Upload Additional Image(s)...</label>
+            <input class="custom-file-input" type="file" id="image" name="image" multiple>
+        </div>
+        <!-- <div class="mb-3">
+            <label class="form-label" for="image">Add Image</label>
+            <input type="file" class="form-control" id="image" name="image" value="<%=park.image %>" multiple/>
+        </div> -->
+        <div class="mb-3">
+            <% park.images.map(function(img, index){ %>
+                    <img src="<%=img.url%>" alt="" class="img-thumbnail">
+                    <div class="form-check-inline">
+                        <input type="checkbox" id="image-<%=index%>" name="deleteImages[]" value="<%=img.filename%>" >
+                    </div>
+                    <label for="image-<%= index %>">Delete?</label>
+            <% })  %>
+        </div>
+        <div class="mb-3">
+            <button class="btn btn-info">Update</button>
+        </div>
+        
+    </form>
+         <div>
+            <a href="/parks/<% park._id %>" >Back to Park</a>
+         </div>
+        
+    </div>
+</div>
+
+<script>
+    const mapToken = '<%- process.env.MAPBOX_TOKEN %>';
+    const park = <%- JSON.stringify(park) %>;
+</script>
+<script src="/javascripts/showMap.js"> </script>
