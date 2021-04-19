@@ -10,6 +10,8 @@ const userSchema = new Schema({
     }
 });
 
+// don't need username and password for User Schema because
+// plugin for passportLocalMongoose saves username and password.
 userSchema.plugin(passportLocalMongoose);
 
 module.exports = mongoose.model('User', userSchema);
