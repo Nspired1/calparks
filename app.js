@@ -47,7 +47,7 @@ app.use(methodOverride('_method'));
 //=== configure session options. Time in milliseconds. ===//
 const sessionOptions = { 
     name: 'session',
-    secret: 'notagoodsecret', 
+    secret: process.env.SESSION_SECRET, 
     resave:'false', 
     saveUninitialized: true,
     cookie: {
