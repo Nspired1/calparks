@@ -111,28 +111,6 @@ databaseLink.once("open", ()=> {
     console.log("Database Connected from App.js!");
 });
 
-// //-- validations middleware with Joi --//
-// const validatePark = (req, res, next) => {
-//    //parkJoiSchema is the Joi schema for park validation
-//     const { error } = parkJoiSchema.validate(req.body);
-//     if(error){
-//         const msg = error.details.map(element => element.message).join(',')
-//         throw new ExpressError(msg, 400)
-//     } else {
-//         next();
-//     }
-// }
-
-// const validateReview = (req, res, next) => {
-//     const { error } = reviewJoiSchema.validate(req.body);
-//     if(error){
-//         const msg = error.details.map(element => element.message).join(',')
-//         throw new ExpressError(msg, 400)
-//     } else {
-//         next();
-//     }
-// }
-
 // routes prefix
 const usersRoutes = require('./routes/users');
 const parksRoutes = require("./routes/parks");
